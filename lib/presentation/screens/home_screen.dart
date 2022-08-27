@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:weather_app/data/helpers/shared_prefs.dart';
 import 'package:weather_app/data/models/app_colors.dart';
 import 'package:weather_app/presentation/screens/locations_screen.dart';
 import 'package:weather_app/presentation/screens/profile_screen.dart';
 import 'package:weather_app/presentation/screens/weather_screen.dart';
 
 import '../../data/constants/countries.dart';
+import '../../data/constants/strings.dart';
+import '../../data/helpers/shared_prefs.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -19,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int screenIndex = 0;
 
   List<Widget> screens = [
-    WeatherScreen(),
+    const WeatherScreen(),
     const LocationsScreen(),
     const ProfileScreen(),
   ];
@@ -31,8 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    // CacheHelper.saveDataList(key: 'countriesKey', valList: countries);
-    // countries = CacheHelper.getDataList(key: 'countriesKey');
+    CacheHelper.saveDataList(
+        key: allCountriesKey, valList: countries);
     super.initState();
   }
 

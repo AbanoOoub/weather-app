@@ -13,12 +13,13 @@ class CacheHelper {
   }
 
   static dynamic getData({required String key}) {
-    dynamic data = sharedPreferences.get(key) ?? false;
+    dynamic data = sharedPreferences.get(key) ?? '';
 
       if (data is String) return data.toString();
       if (data is int) return data.toInt();
       if (data is double) return data.toDouble();
-      return data as bool;
+      if (data is bool) return data;
+
   }
   static dynamic getDataList({required String key}) {
     dynamic data = sharedPreferences.getStringList(key) ?? [];
@@ -26,7 +27,7 @@ class CacheHelper {
       return data;
   }
 
-  static saveData({required String key, dynamic val}) {
+  static saveData({required String key, required dynamic val}) {
     if (val is bool) return sharedPreferences.setBool(key, val);
     if (val is String) return sharedPreferences.setString(key, val);
     if (val is int) return sharedPreferences.setInt(key, val);

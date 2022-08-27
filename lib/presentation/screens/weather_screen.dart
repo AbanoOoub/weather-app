@@ -3,20 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:sizer/sizer.dart';
-import 'package:weather_app/business_logic/weather_cubit/weather_cubit.dart';
-import '../../business_logic/weather_cubit/weather_state.dart';
+import 'package:weather_app/business_logic/weather_logic/weather_cubit.dart';
+import 'package:weather_app/business_logic/weather_logic/weather_state.dart';
 import '../../data/constants/countries.dart';
 import '../../data/models/app_colors.dart';
 
 class WeatherScreen extends StatelessWidget {
-  WeatherScreen({Key? key}) : super(key: key);
-
-  String selectedValue = 'Egypt';
+  const WeatherScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => WeatherCubit()..getWeather(country: selectedValue),
+      create: (context) => WeatherCubit()..getWeather(country: 'egypt'),
       child: BlocConsumer<WeatherCubit, WeatherState>(
         listener: (context, state) {
           // TODO: implement listener
@@ -29,16 +27,16 @@ class WeatherScreen extends StatelessWidget {
                 children: [
                   SizedBox(height: 5.h),
                   DropdownButtonHideUnderline(
-                    child: DropdownButton2(
+                    child: DropdownButton(
                       hint: Text(
-                        'Select Country',
+                        weatherCubit.selectedCountry,
                         style: TextStyle(
                           fontSize: 20.sp,
                           color: AppColors.secondColor,
                         ),
                       ),
-                      items: countries
-                          .map((item) => DropdownMenuItem<String>(
+                      items: weatherCubit.currCountries
+                          .map((String item) => DropdownMenuItem<String>(
                                 value: item,
                                 child: Text(
                                   item,
@@ -49,9 +47,8 @@ class WeatherScreen extends StatelessWidget {
                                 ),
                               ))
                           .toList(),
-                      value: selectedValue,
                       onChanged: (String? value) {
-                        selectedValue = value!;
+                        weatherCubit.selectedCountry = value!;
                         weatherCubit.getWeather(country: value);
                       },
                     ),
@@ -63,7 +60,7 @@ class WeatherScreen extends StatelessWidget {
                             height: 20.h, width: 40.w)),
                     Center(
                       child: Text(
-                        '${weatherCubit.weatherModel.temp}°',
+                        '${weatherCubit.weatherModel.temp ?? ''}°',
                         style: TextStyle(
                             fontSize: 48.sp, color: AppColors.secondColor),
                       ),
@@ -80,9 +77,9 @@ class WeatherScreen extends StatelessWidget {
                       onPressed: () async {
                         Position pos =
                             await weatherCubit.getGeoLocationPosition();
-                        selectedValue =
+                        weatherCubit.selectedCountry =
                             await weatherCubit.getCountryNameFromPosition(pos);
-                        weatherCubit.getWeather(country: selectedValue);
+                        weatherCubit.getWeather(country: weatherCubit.selectedCountry);
                       },
                       child: Text(
                         'Get weather of current location',

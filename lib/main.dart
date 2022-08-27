@@ -1,10 +1,15 @@
 import 'package:bloc/bloc.dart';
+import 'package:bot_toast/bot_toast.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
+import 'package:weather_app/presentation/screens/change_profile_data_screen.dart';
 import 'package:weather_app/presentation/screens/home_screen.dart';
-
+import 'package:weather_app/presentation/screens/login_screen.dart';
+import 'package:weather_app/presentation/screens/registration_screen.dart';
+import 'package:weather_app/presentation/screens/start_screen.dart';
+import 'data/constants/strings.dart';
 import 'data/helpers/bloc_observer.dart';
 import 'data/helpers/dio.dart';
 import 'data/helpers/firebase_options.dart';
@@ -31,9 +36,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(
       builder: (context, orientation, deviceType) {
-        return const MaterialApp(
+        return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: HomeScreen(),
+          initialRoute: startScreenRoute,
+          builder: BotToastInit(),
+          routes: {
+            startScreenRoute: (context) => const StartScreen(),
+            loginScreenRoute: (context) =>  LoginScreen(),
+            registerScreenRoute: (context) =>  RegisterScreen(),
+            homeScreenRoute: (context) =>  const HomeScreen(),
+            changeProfileDataScreenRoute: (context) =>  ChangeProfileDataScreen(),
+          },
         );
       },
     );

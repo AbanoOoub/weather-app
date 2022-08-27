@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:weather_app/business_logic/weather_cubit/weather_state.dart';
+import 'package:weather_app/business_logic/weather_logic/weather_state.dart';
+import 'package:weather_app/data/constants/countries.dart';
 import 'package:weather_app/data/constants/strings.dart';
 import 'package:weather_app/data/helpers/dio.dart';
+import 'package:weather_app/data/helpers/shared_prefs.dart';
+import 'package:weather_app/data/helpers/toast_message.dart';
 import 'package:weather_app/data/models/weather_model.dart';
+
 
 
 class WeatherCubit extends Cubit<WeatherState> {
@@ -15,7 +19,12 @@ class WeatherCubit extends Cubit<WeatherState> {
 
    WeatherModel weatherModel = WeatherModel();
 
+  List<String> currCountries = [];
+  String selectedCountry = "egypt";
+
+
   void getWeather({required String country}) async{
+    initCountries();
     emit(GetWeatherLoadingState());
     await DioHelper.getData(endPoint: weatherEndPoint, query: {'city': country})
         .then((value) {
@@ -24,6 +33,7 @@ class WeatherCubit extends Cubit<WeatherState> {
       emit(GetWeatherSuccessState());
     }).catchError((e) {
       emit(GetWeatherErrorState());
+      toast(msg: 'This is invalid name of country');
       debugPrint(e.toString());
     });
   }
@@ -44,6 +54,12 @@ class WeatherCubit extends Cubit<WeatherState> {
       weatherModel.tempImg = sunnyImg;
     }
   }
+
+  void initCountries(){
+    currCountries = CacheHelper.getDataList(key: allCountriesKey) ?? countries;
+  }
+
+
 
   Future<Position> getGeoLocationPosition() async {
     bool serviceEnabled;
@@ -68,13 +84,13 @@ class WeatherCubit extends Cubit<WeatherState> {
       return Future.error(
           'Location permissions are permanently denied, we cannot request permissions.');
     }
-
     return await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
   }
 
   Future<String> getCountryNameFromPosition(Position position)async {
     List<Placemark> placeMarks = await placemarkFromCoordinates(position.latitude, position.longitude);
     Placemark place = placeMarks[0];
+    CacheHelper.saveData(key: userLocationKey, val: place.country);
     emit(GetCountryNameSuccessState());
     return place.country!;
   }

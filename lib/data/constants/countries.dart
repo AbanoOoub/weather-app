@@ -1,10 +1,9 @@
 List<String> countries = [
-  "Egypt",
-  "London",
-  "Dubai",
-  "Saudi Arabia",
-  "Qatar",
-  "China",
+  "egypt",
+  "dubai",
+  "london",
+  "saudi arabia",
+  "qatar",
+  "china",
   "united kingdom",
-
 ];
