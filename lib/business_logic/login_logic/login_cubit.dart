@@ -1,12 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:bot_toast/bot_toast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sizer/sizer.dart';
 import 'package:weather_app/data/helpers/toast_message.dart';
-import 'package:weather_app/data/models/app_colors.dart';
-import 'package:weather_app/presentation/custom_widgets/def_text.dart';
 
 part 'login_state.dart';
 

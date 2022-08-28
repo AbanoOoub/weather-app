@@ -1,11 +1,9 @@
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:sizer/sizer.dart';
 import 'package:weather_app/business_logic/weather_logic/weather_cubit.dart';
 import 'package:weather_app/business_logic/weather_logic/weather_state.dart';
-import '../../data/constants/countries.dart';
 import '../../data/models/app_colors.dart';
 
 class WeatherScreen extends StatelessWidget {
@@ -21,11 +19,11 @@ class WeatherScreen extends StatelessWidget {
         },
         builder: (context, state) {
           var weatherCubit = WeatherCubit.get(context);
-          return Center(
-            child: SingleChildScrollView(
+          return SingleChildScrollView(
+            child: Center(
               child: Column(
                 children: [
-                  SizedBox(height: 5.h),
+                  SizedBox(height: 50.h),
                   DropdownButtonHideUnderline(
                     child: DropdownButton(
                       hint: Text(
@@ -41,7 +39,7 @@ class WeatherScreen extends StatelessWidget {
                                 child: Text(
                                   item,
                                   style: TextStyle(
-                                    fontSize: 16.sp,
+                                    fontSize: 20.sp,
                                     color: AppColors.secondColor,
                                   ),
                                 ),
@@ -53,11 +51,11 @@ class WeatherScreen extends StatelessWidget {
                       },
                     ),
                   ),
-                  SizedBox(height: 15.h),
+                  SizedBox(height: 40.h),
                   if (state is! GetWeatherLoadingState) ...[
                     Center(
                         child: Image.asset('${weatherCubit.weatherModel.tempImg}',
-                            height: 20.h, width: 40.w)),
+                            height: 100.h, width: 100.w)),
                     Center(
                       child: Text(
                         '${weatherCubit.weatherModel.temp ?? ''}°',
@@ -67,12 +65,12 @@ class WeatherScreen extends StatelessWidget {
                     ),
                   ] else ...[
                     SizedBox(
-                        width: 20.w,
-                        height: 10.h,
+                        width: 80.w,
+                        height: 80.h,
                         child: const CircularProgressIndicator(
                             color: AppColors.secondColor))
                   ],
-                  SizedBox(height: 20.h),
+                  SizedBox(height: 300.h),
                   TextButton(
                       onPressed: () async {
                         Position pos =

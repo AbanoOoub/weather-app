@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_app/data/constants/countries.dart';
 import 'package:weather_app/data/constants/strings.dart';
 import 'package:weather_app/data/helpers/shared_prefs.dart';
@@ -37,7 +37,7 @@ class _LocationsScreenState extends State<LocationsScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizedBox(
-                        width: 70.w,
+                        width: 250.w,
                         child: CustomTextInput(
                             controller: countryController,
                             hint: 'Enter new country',
@@ -69,7 +69,7 @@ class _LocationsScreenState extends State<LocationsScreen> {
             Expanded(
               flex: 6,
               child: SizedBox(
-                width: 90.w,
+                width: double.infinity,
                 child: ListView.builder(
                     itemCount: countries.length,
                     itemBuilder: (context, index) => Center(
@@ -77,7 +77,7 @@ class _LocationsScreenState extends State<LocationsScreen> {
                             padding: const EdgeInsets.all(10.0),
                             child: CustomTextWidget(
                                 text: countries[index],
-                                fontSize: 14.sp,
+                                fontSize: 18.sp,
                                 fontWeight: FontWeight.w300,
                                 textColor: AppColors.secondColor),
                           ),

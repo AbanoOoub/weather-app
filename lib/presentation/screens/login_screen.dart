@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sizer/sizer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_app/business_logic/login_logic/login_cubit.dart';
 import 'package:weather_app/data/models/app_colors.dart';
 import 'package:weather_app/presentation/custom_widgets/def_text_btn.dart';
@@ -43,20 +43,20 @@ class LoginScreen extends StatelessWidget {
                           onTap: () {
                             Navigator.pop(context);
                           }),
-                      SizedBox(height: 5.h),
+                      SizedBox(height: 30.h),
                       CustomTextWidget(
                         text: 'Login',
                         textColor: AppColors.secondColor,
                         fontWeight: FontWeight.bold,
-                        fontSize: 22.sp,
+                        fontSize: 24.sp,
                       ),
-                      SizedBox(height: 10.h),
+                      SizedBox(height: 80.h),
                       CustomTextInput(
                           controller: emailController,
                           hint: 'Enter Email',
                           prefixIcon: Icons.email,
                           type: TextInputType.emailAddress),
-                      SizedBox(height: 2.h),
+                      SizedBox(height: 10.h),
                       CustomTextInput(
                           controller: passwordController,
                           hint: 'Enter Password',
@@ -69,11 +69,11 @@ class LoginScreen extends StatelessWidget {
                               ? Icons.visibility_off
                               : Icons.visibility,
                           type: TextInputType.visiblePassword),
-                      SizedBox(height: 30.h),
+                      SizedBox(height: 200.h),
                       Center(
                         child: SizedBox(
-                          width: 90.w,
-                          height: 7.h,
+                          width: double.infinity,
+                          height: 60.h,
                           child: state is LoginLoadingState
                               ? const Center(child: CircularProgressIndicator())
                               : CustomTextButtonWidget(
@@ -94,6 +94,7 @@ class LoginScreen extends StatelessWidget {
                               }),
                         ),
                       ),
+                      SizedBox(height: 30.h),
                       Padding(
                         padding: EdgeInsets.only(left: 2.w, right: 2.w),
                         child: Row(children: [
@@ -107,7 +108,7 @@ class LoginScreen extends StatelessWidget {
                             child: Center(
                               child: CustomTextWidget(
                                   text: 'or connect with',
-                                  fontSize: 10.sp,
+                                  fontSize: 14.sp,
                                   fontWeight: FontWeight.w400,
                                   textColor: AppColors.secondColor),
                             ),
@@ -127,19 +128,19 @@ class LoginScreen extends StatelessWidget {
                                 onPressed: () {},
                                 child: Image.asset(
                                   appleImg,
-                                  height: 10.w,
+                                  height: 30.w,
                                 )),
                             TextButton(
                                 onPressed: () {},
                                 child: Image.asset(
                                   googleImg,
-                                  height: 10.w,
+                                  height: 30.w,
                                 )),
                             TextButton(
                                 onPressed: () {},
                                 child: Image.asset(
                                   facebookImg,
-                                  height: 10.w,
+                                  height: 30.w,
                                 )),
                           ]),
                     ],

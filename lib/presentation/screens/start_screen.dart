@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_app/data/constants/strings.dart';
 import 'package:weather_app/presentation/custom_widgets/def_text.dart';
 
@@ -21,23 +21,23 @@ class StartScreen extends StatelessWidget {
             children: [
               CustomTextWidget(
                 text: 'Welcome to Weather',
-                fontSize: 22.sp,
+                fontSize: 24.sp,
                 fontWeight: FontWeight.bold,
                 textColor: AppColors.secondColor,
               ),
               CustomTextWidget(
                 text: 'A simple application to know the weather for every one use',
-                fontSize: 14.sp,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.w300,
                 textColor: AppColors.secondColor,
               ),
-              SizedBox(height: 5.h),
-              SizedBox(height: 50.h,width: double.infinity,child: Image.asset(weatherImg)),
-              SizedBox(height: 10.h),
+              SizedBox(height: 200.h),
+              SizedBox(width: double.infinity,child: Image.asset(weatherImg)),
+              SizedBox(height: 50.h),
               Center(
                 child: SizedBox(
-                  width: 80.w,
-                  height: 7.h,
+                  width:  double.infinity,
+                  height: 60.h,
                   child: CustomTextButtonWidget(
                       text: 'Sign Up',
                       fontSize: 16.sp,
@@ -51,11 +51,11 @@ class StartScreen extends StatelessWidget {
                       }),
                 ),
               ),
-              SizedBox(height: 2.h),
+              SizedBox(height: 10.h),
               Center(
                 child: SizedBox(
-                  width: 80.w,
-                  height: 7.h,
+                  width: double.infinity,
+                  height: 60.h,
                   child: CustomTextButtonWidget(
                       text: 'Sign In',
                       fontSize: 16.sp,

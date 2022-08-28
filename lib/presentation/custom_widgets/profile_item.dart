@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_app/data/models/app_colors.dart';
 import 'package:weather_app/presentation/custom_widgets/def_text.dart';
 
@@ -25,7 +25,7 @@ class MyProfileInfoItemWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 3.h,
+            height: 50.h,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

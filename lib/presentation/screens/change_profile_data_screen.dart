@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sizer/sizer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_app/business_logic/profile_logic/profile_cubit.dart';
 import 'package:weather_app/data/constants/strings.dart';
 import 'package:weather_app/data/helpers/toast_message.dart';
@@ -46,26 +46,26 @@ class ChangeProfileDataScreen extends StatelessWidget {
                         onTap: () {
                           Navigator.pop(context);
                         }),
-                    SizedBox(height: 5.h),
+                    SizedBox(height: 50.h),
                     CustomTextWidget(
                       text: 'change in Fields that you need to update',
                       textColor: AppColors.secondColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 22.sp,
                     ),
-                    SizedBox(height: 10.h),
+                    SizedBox(height: 80.h),
                     CustomTextInput(
                         controller: newNameController,
                         hint: 'Enter new name',
                         prefixIcon: Icons.person,
                         type: TextInputType.text),
-                    SizedBox(height: 2.h),
+                    SizedBox(height: 10.h),
                     CustomTextInput(
                         controller: newEmailController,
                         hint: 'Enter new email',
                         prefixIcon: Icons.email,
                         type: TextInputType.emailAddress),
-                    SizedBox(height: 2.h),
+                    SizedBox(height: 10.h),
                     CustomTextInput(
                         controller: newPasswordController,
                         hint: 'Enter new Password',
@@ -78,17 +78,17 @@ class ChangeProfileDataScreen extends StatelessWidget {
                             ? Icons.visibility_off
                             : Icons.visibility,
                         type: TextInputType.visiblePassword),
-                    SizedBox(height: 2.h),
+                    SizedBox(height: 10.h),
                     CustomTextInput(
                         controller: newCountryController,
                         hint: 'Enter your country',
                         prefixIcon: Icons.location_on,
                         type: TextInputType.text),
-                    SizedBox(height: 25.h),
+                    SizedBox(height: 80.h),
                     Center(
                       child: SizedBox(
-                        width: 90.w,
-                        height: 7.h,
+                        width: double.infinity,
+                        height: 60.h,
                         child: state is UpdateLoadingState
                             ? const Center(child: CircularProgressIndicator())
                             : CustomTextButtonWidget(

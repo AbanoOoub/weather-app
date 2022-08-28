@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sizer/sizer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_app/business_logic/profile_logic/profile_cubit.dart';
 import 'package:weather_app/data/models/app_colors.dart';
 import 'package:weather_app/presentation/custom_widgets/def_text_btn.dart';
@@ -31,32 +31,32 @@ class ProfileScreen extends StatelessWidget {
                   children: [
                     MyProfileInfoItemWidget(
                       text: profileCubit.userName,
-                      fontSize: 12.sp,
+                      fontSize: 20.sp,
                       textColor: AppColors.secondColor,
                       fontWeight: FontWeight.w300,
                     ),
                     MyProfileInfoItemWidget(
                       text: profileCubit.userEmail,
-                      fontSize: 12.sp,
+                      fontSize: 20.sp,
                       textColor: AppColors.secondColor,
                       fontWeight: FontWeight.w300,
                     ),
                     MyProfileInfoItemWidget(
                       text: profileCubit.userPassword,
-                      fontSize: 12.sp,
+                      fontSize: 20.sp,
                       textColor: AppColors.secondColor,
                       fontWeight: FontWeight.w300,
                     ),
                     MyProfileInfoItemWidget(
                       text: profileCubit.userCountry,
-                      fontSize: 12.sp,
+                      fontSize: 20.sp,
                       textColor: AppColors.secondColor,
                       fontWeight: FontWeight.w300,
                     ),
                     Center(
                       child: SizedBox(
-                        width: 90.w,
-                        height: 6.h,
+                        width: double.infinity,
+                        height: 60.h,
                         child: CustomTextButtonWidget(
                             text: 'Change Data',
                             textColor: AppColors.secondColor,
@@ -81,37 +81,3 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
-
-// CustomTextInput(
-//     hint: 'Name',
-//     controller: fullNameController,
-//     prefixIcon: Icons.person,
-//     type: TextInputType.text),
-
-// CustomTextButtonWidget(
-//     text: 'Update',
-//     textColor: AppColors.secondColor,
-//     fontSize: 14.sp,
-//     fontWeight: FontWeight.w300,
-//     btnBackgroundColor: AppColors.white,
-//     hasBorder: true,
-//     borderColor: AppColors.mainColor,
-//     onPressed: () {}),
-
-// CustomTextInput(
-//     hint: 'Country',
-//     controller: countyController,
-//     prefixIcon: Icons.location_on,
-//     type: TextInputType.emailAddress),
-
-// CustomTextInput(
-//     hint: 'new password',
-//     controller: emailController,
-//     prefixIcon: Icons.lock,
-//     type: TextInputType.emailAddress),
-
-// CustomTextInput(
-//     hint: 'Email',
-//     controller: emailController,
-//     prefixIcon: Icons.email,
-//     type: TextInputType.emailAddress),

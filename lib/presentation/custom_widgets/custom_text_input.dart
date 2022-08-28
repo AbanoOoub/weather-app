@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
 import 'package:weather_app/presentation/custom_widgets/def_text_form_field.dart';
 
 import '../../data/models/app_colors.dart';

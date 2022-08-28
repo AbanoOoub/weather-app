@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_app/data/models/app_colors.dart';
 import 'package:weather_app/presentation/screens/locations_screen.dart';
 import 'package:weather_app/presentation/screens/profile_screen.dart';

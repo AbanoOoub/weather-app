@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sizer/sizer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_app/business_logic/register_logic/register_cubit.dart';
 import 'package:weather_app/data/constants/strings.dart';
 import 'package:weather_app/presentation/custom_widgets/custom_text_input.dart';
 import 'package:weather_app/presentation/custom_widgets/def_text_btn.dart';
-
 import '../../data/models/app_colors.dart';
 import '../custom_widgets/def_text.dart';
 
@@ -47,26 +46,26 @@ class RegisterScreen extends StatelessWidget {
                           onTap: () {
                             Navigator.pop(context);
                           }),
-                      SizedBox(height: 5.h),
+                      SizedBox(height: 40.h),
                       CustomTextWidget(
                         text: 'Registration',
                         textColor: AppColors.secondColor,
                         fontWeight: FontWeight.bold,
-                        fontSize: 22.sp,
+                        fontSize: 28.sp,
                       ),
-                      SizedBox(height: 10.h),
+                      SizedBox(height: 80.h),
                       CustomTextInput(
                           controller: fullNameController,
                           hint: 'Enter Full Name',
                           prefixIcon: Icons.person,
                           type: TextInputType.text),
-                      SizedBox(height: 2.h),
+                      SizedBox(height: 10.h),
                       CustomTextInput(
                           controller: emailController,
                           hint: 'Enter Email',
                           prefixIcon: Icons.email,
                           type: TextInputType.emailAddress),
-                      SizedBox(height: 2.h),
+                      SizedBox(height: 10.h),
                       CustomTextInput(
                           controller: passwordController,
                           hint: 'Enter Password',
@@ -79,16 +78,16 @@ class RegisterScreen extends StatelessWidget {
                               ? Icons.visibility_off
                               : Icons.visibility,
                           type: TextInputType.visiblePassword),
-                      SizedBox(height: 30.h),
+                      SizedBox(height: 80.h),
                       Center(
                         child: SizedBox(
-                          width: 90.w,
-                          height: 7.h,
+                          width: double.infinity,
+                          height: 60.h,
                           child: state is RegisterLoadingState
                               ? const Center(child: CircularProgressIndicator())
                               : CustomTextButtonWidget(
                                   text: 'Sign up',
-                                  fontSize: 16.sp,
+                                  fontSize: 22.sp,
                                   fontWeight: FontWeight.normal,
                                   textColor: AppColors.secondColor,
                                   btnBackgroundColor: AppColors.white,
@@ -112,13 +111,13 @@ class RegisterScreen extends StatelessWidget {
                         children: [
                           CustomTextWidget(
                               text: 'Already have an account?',
-                              fontSize: 12.sp,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.normal,
                               textColor: AppColors.secondColor),
                           CustomTextButtonWidget(
                               text: 'Login Here',
                               textColor: Colors.blueGrey,
-                              fontSize: 12.sp,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.w200,
                               btnBackgroundColor: Colors.transparent,
                               hasBorder: false,
